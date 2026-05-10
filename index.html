@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ruwadzano — Z.C.C. Mothers | 50 Years Jubilee</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@700&family=Cinzel:wght@400;600;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --green-deep:    #0a2e0f;
+  --green-rich:    #134a1a;
+  --green-mid:     #1e6b27;
+  --green-bright:  #2d9e38;
+  --gold:          #c9a227;
+  --gold-light:    #f0cb5a;
+  --gold-pale:     #fef0b0;
+  --gold-shine:    #ffe680;
+  --cream:         #fdf8ec;
+  --white:         #ffffff;
+  --text-light:    rgba(255,255,255,0.88);
+  --text-dim:      rgba(255,255,255,0.55);
+  --overlay-dark:  rgba(7,25,10,0.72);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
+body {
+  font-family:'Lato',sans-serif;
+  background:var(--green-deep);
+  color:var(--white);
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* ── CANVAS BACKGROUND ── */
+#particle-canvas{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ── SCROLL PROGRESS ── */
+#scroll-bar{
+  position:fixed;
+  top:0;left:0;
+  height:4px;
+  width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  z-index:9999;
+  transition:width 0.1s;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 5%;
+  background:rgba(7,25,10,0.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(201,162,39,0.25);
+  transition:all 0.4s;
+}
+nav .nav-logo{
+  font-family:'Cinzel',serif;
+  font-size:1.1rem;
+  color:var(--gold-light);
+  letter-spacing:3px;
+}
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+nav ul a{
+  font-family:'Lato',sans-serif;
+  font-size:0.82rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--text-light);
+  text-decoration:none;
+  transition:color 0.3s;
+}
+nav ul a:hover{color:var(--gold-light);}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 5% 80px;
+  overflow:hidden;
+  z-index:1;
+}
+
+.hero-bg-rings{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+}
+.ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(201,162,39,0.12);
+  animation:pulsRing 6s ease-in-out infinite;
+}
+.ring:nth-child(1){width:300px;height:300px;animation-delay:0s;}
+.ring:nth-child(2){width:550px;height:550px;animation-delay:1s;}
+.ring:nth-child(3){width:800px;height:800px;animation-delay:2s;}
+.ring:nth-child(4){width:1100px;height:1100px;animation-delay:3s;}
+.ring:nth-child(5){width:1400px;height:1400px;animation-delay:4s;}
+
+@keyframes pulsRing{
+  0%,100%{transform:scale(1);opacity:0.4;}
+  50%{transform:scale(1.04);opacity:0.12;}
+}
+
+.hero-emblem{
+  position:relative;
+  width:160px;height:160px;
+  margin:0 auto 40px;
+  animation:fadeSlideDown 1.2s ease both;
+}
+.hero-emblem svg{width:100%;height:100%;}
+
+.hero-subtitle{
+  font-family:'Cinzel',serif;
+  font-size:0.9rem;
+  letter-spacing:6px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:20px;
+  animation:fadeSlideDown 1.4s ease both;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,8vw,8rem);
+  font-weight:900;
+  font-style:italic;
+  line-height:1.0;
+  background:linear-gradient(135deg,var(--gold-pale),var(--gold),var(--gold-light),var(--gold));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:10px;
+  animation:fadeSlideDown 1.6s ease both;
+  text-shadow:none;
+}
+
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2.5vw,1.8rem);
+  font-style:italic;
+  color:var(--text-light);
+  margin-bottom:40px;
+  animation:fadeSlideDown 1.8s ease both;
+}
+
+.hero-divider{
+  width:200px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto 40px;
+  animation:fadeIn 2s ease both;
+}
+
+.hero-intro{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,1.8vw,1.3rem);
+  line-height:1.9;
+  color:var(--text-light);
+  max-width:700px;
+  margin:0 auto 60px;
+  animation:fadeSlideUp 2s ease both;
+}
+
+.jubilee-badge{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  padding:28px 50px;
+  border:2px solid var(--gold);
+  border-radius:6px;
+  background:rgba(201,162,39,0.08);
+  backdrop-filter:blur(10px);
+  animation:fadeSlideUp 2.2s ease both;
+  position:relative;
+  overflow:hidden;
+}
+.jubilee-badge::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(201,162,39,0.1),transparent,rgba(201,162,39,0.05));
+}
+.jubilee-badge .num{
+  font-family:'Cinzel',serif;
+  font-size:4.5rem;
+  font-weight:900;
+  color:var(--gold-light);
+  line-height:1;
+}
+.jubilee-badge .lbl{
+  font-family:'Cinzel',serif;
+  font-size:0.8rem;
+  letter-spacing:5px;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+.jubilee-badge .sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;
+  font-style:italic;
+  color:var(--text-dim);
+  margin-top:8px;
+}
+
+/* ── GENERIC SECTION ── */
+section{
+  position:relative;
+  z-index:1;
+  padding:100px 5%;
+}
+
+.section-label{
+  font-family:'Cinzel',serif;
+  font-size:0.75rem;
+  letter-spacing:6px;
+  color:var(--gold);
+  text-transform:uppercase;
+  text-align:center;
+  margin-bottom:16px;
+}
+
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5vw,4.5rem);
+  font-weight:700;
+  font-style:italic;
+  text-align:center;
+  background:linear-gradient(135deg,var(--gold-pale),var(--gold-light));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+
+.gold-rule{
+  width:120px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto 60px;
+}
+
+/* ── JUBILEE STORY ── */
+.jubilee-story{
+  background:linear-gradient(180deg,var(--green-deep),var(--green-rich),var(--green-deep));
+  border-top:1px solid rgba(201,162,39,0.15);
+  border-bottom:1px solid rgba(201,162,39,0.15);
+}
+
+.jubilee-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.jubilee-text h3{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  font-style:italic;
+  color:var(--gold-light);
+  margin-bottom:20px;
+}
+.jubilee-text p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;
+  line-height:1.9;
+  color:var(--text-light);
+  margin-bottom:16px;
+}
+
+.jubilee-milestones{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+.milestone{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+  padding:22px 28px;
+  background:rgba(201,162,39,0.06);
+  border-left:3px solid var(--gold);
+  border-radius:0 12px 12px 0;
+  transition:background 0.3s;
+}
+.milestone:hover{background:rgba(201,162,39,0.12);}
+.milestone .year{
+  font-family:'Cinzel',serif;
+  font-size:1.1rem;
+  color:var(--gold);
+  white-space:nowrap;
+  min-width:56px;
+}
+.milestone .desc{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;
+  line-height:1.7;
+  color:var(--text-light);
+}
+
+/* ── BIBLE VERSE ── */
+.bible-section{
+  background:radial-gradient(ellipse at center,var(--green-rich) 0%,var(--green-deep) 70%);
+  overflow:hidden;
+}
+
+.verse-container{
+  max-width:1100px;
+  margin:0 auto;
+  position:relative;
+}
+
+.verse-glow{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(201,162,39,0.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.verse-columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  margin-bottom:48px;
+}
+
+.verse-col{
+  padding:40px;
+  background:rgba(201,162,39,0.05);
+  border:1px solid rgba(201,162,39,0.2);
+  border-radius:16px;
+  backdrop-filter:blur(8px);
+  position:relative;
+  overflow:hidden;
+  transition:transform 0.4s,box-shadow 0.4s;
+}
+.verse-col:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 40px rgba(201,162,39,0.1);
+}
+.verse-col::before{
+  content:'"';
+  position:absolute;
+  top:-20px;left:20px;
+  font-family:'Playfair Display',serif;
+  font-size:10rem;
+  color:rgba(201,162,39,0.06);
+  line-height:1;
+  pointer-events:none;
+}
+
+.verse-lang{
+  font-family:'Cinzel',serif;
+  font-size:0.7rem;
+  letter-spacing:5px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.verse-lang::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:rgba(201,162,39,0.3);
+}
+
+.verse-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  font-style:italic;
+  line-height:1.8;
+  color:var(--cream);
+}
+
+.verse-ref{
+  text-align:center;
+  font-family:'Cinzel',serif;
+  font-size:1rem;
+  letter-spacing:4px;
+  color:var(--gold-light);
+  padding:20px 40px;
+  border:1px solid rgba(201,162,39,0.3);
+  border-radius:50px;
+  display:inline-block;
+  background:rgba(201,162,39,0.06);
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
+}
+
+/* ── MAGAZINE GALLERY ── */
+.gallery-section{
+  background:var(--green-deep);
+  padding:100px 3%;
+}
+
+.mag-grid{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:auto;
+  gap:16px;
+}
+
+.mag-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:4px;
+  background:var(--green-rich);
+  cursor:pointer;
+}
+.mag-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(7,25,10,0.85));
+  transition:opacity 0.4s;
+}
+.mag-card:hover::after{opacity:0.5;}
+
+.mag-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s;
+  filter:brightness(0.85) saturate(1.1);
+}
+.mag-card:hover img{
+  transform:scale(1.08);
+  filter:brightness(1) saturate(1.3);
+}
+
+.mag-caption{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:24px 20px 18px;
+  z-index:2;
+  transform:translateY(8px);
+  transition:transform 0.4s;
+}
+.mag-card:hover .mag-caption{transform:translateY(0);}
+.mag-caption .tag{
+  font-family:'Cinzel',serif;
+  font-size:0.6rem;
+  letter-spacing:4px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+/* grid layout spans */
+.mag-card:nth-child(1){grid-column:1/6; grid-row:1; height:520px;}
+.mag-card:nth-child(2){grid-column:6/9; grid-row:1; height:520px;}
+.mag-card:nth-child(3){grid-column:9/13;grid-row:1; height:520px;}
+.mag-card:nth-child(4){grid-column:1/5; grid-row:2; height:420px;}
+.mag-card:nth-child(5){grid-column:5/13;grid-row:2; height:420px;}
+
+.mag-overlay-text{
+  text-align:center;
+  margin-top:40px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;
+  font-style:italic;
+  color:var(--text-dim);
+  letter-spacing:1px;
+}
+
+/* ── MESSAGES ── */
+.messages-section{
+  background:linear-gradient(180deg,var(--green-deep),#0d3812,var(--green-deep));
+}
+
+.msg-grid{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.msg-card{
+  padding:48px 36px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(201,162,39,0.15);
+  border-radius:4px;
+  position:relative;
+  overflow:hidden;
+  transition:transform 0.4s,box-shadow 0.4s,border-color 0.4s;
+}
+.msg-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 70px rgba(0,0,0,0.5),0 0 30px rgba(201,162,39,0.08);
+  border-color:rgba(201,162,39,0.4);
+}
+.msg-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.5s;
+}
+.msg-card:hover::before{transform:scaleX(1);}
+
+.msg-icon{
+  font-size:2.5rem;
+  margin-bottom:20px;
+  display:block;
+}
+.msg-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  font-style:italic;
+  color:var(--gold-light);
+  margin-bottom:16px;
+}
+.msg-card p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;
+  line-height:1.85;
+  color:var(--text-light);
+}
+
+/* large featured message */
+.msg-featured{
+  grid-column:1/4;
+  background:rgba(201,162,39,0.04);
+  border-color:rgba(201,162,39,0.25);
+  padding:60px;
+  text-align:center;
+}
+.msg-featured p{
+  font-size:1.4rem;
+  max-width:800px;
+  margin:0 auto;
+}
+
+/* ── RUWADZANO TRIBUTE ── */
+.ruwadzano-section{
+  background:radial-gradient(ellipse at 30% 50%,rgba(45,158,56,0.08) 0%,transparent 60%),var(--green-deep);
+  padding:120px 5%;
+}
+
+.ruwadzano-inner{
+  max-width:1000px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.ruwadzano-inner .big-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,3vw,2.4rem);
+  font-style:italic;
+  line-height:1.7;
+  color:var(--cream);
+  margin:40px 0;
+  position:relative;
+  padding:0 40px;
+}
+.ruwadzano-inner .big-quote::before,
+.ruwadzano-inner .big-quote::after{
+  content:'"';
+  font-family:'Playfair Display',serif;
+  font-size:6rem;
+  color:var(--gold);
+  opacity:0.25;
+  position:absolute;
+  line-height:1;
+}
+.ruwadzano-inner .big-quote::before{top:-20px;left:0;}
+.ruwadzano-inner .big-quote::after{content:'"';bottom:-60px;right:0;}
+
+.ruwadzano-traits{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:60px;
+}
+.trait-pill{
+  font-family:'Cinzel',serif;
+  font-size:0.75rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  border:1px solid rgba(201,162,39,0.35);
+  padding:10px 24px;
+  border-radius:50px;
+  background:rgba(201,162,39,0.04);
+  transition:all 0.3s;
+}
+.trait-pill:hover{
+  background:rgba(201,162,39,0.12);
+  transform:scale(1.05);
+}
+
+/* ── TIMELINE ── */
+.timeline-section{
+  background:var(--green-rich);
+  padding:120px 5%;
+}
+
+.tl-wrap{
+  max-width:900px;
+  margin:0 auto;
+  position:relative;
+}
+.tl-wrap::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;bottom:0;
+  width:2px;
+  background:linear-gradient(180deg,transparent,var(--gold),transparent);
+  transform:translateX(-50%);
+}
+
+.tl-item{
+  display:flex;
+  gap:50px;
+  align-items:flex-start;
+  margin-bottom:60px;
+  position:relative;
+}
+.tl-item:nth-child(even){
+  flex-direction:row-reverse;
+}
+.tl-item:nth-child(even) .tl-content{text-align:right;}
+
+.tl-dot{
+  position:absolute;
+  left:50%;
+  top:24px;
+  transform:translateX(-50%);
+  width:20px;height:20px;
+  border-radius:50%;
+  background:var(--gold);
+  border:3px solid var(--green-rich);
+  box-shadow:0 0 0 6px rgba(201,162,39,0.2);
+  z-index:2;
+}
+
+.tl-content{
+  flex:1;
+  padding:28px 32px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(201,162,39,0.15);
+  border-radius:8px;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.tl-content:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 50px rgba(0,0,0,0.4);
+}
+.tl-content .year{
+  font-family:'Cinzel',serif;
+  font-size:1.1rem;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+.tl-content h4{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  font-style:italic;
+  color:var(--gold-light);
+  margin-bottom:10px;
+}
+.tl-content p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;
+  line-height:1.8;
+  color:var(--text-light);
+}
+.tl-spacer{flex:1;}
+
+/* ── LOVE REASONS ── */
+.reasons-section{
+  background:var(--green-deep);
+  padding:100px 5%;
+}
+
+.reasons-grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.reason-card{
+  padding:40px 28px;
+  background:rgba(255,255,255,0.025);
+  border:1px solid rgba(201,162,39,0.1);
+  border-radius:4px;
+  text-align:center;
+  transition:all 0.4s;
+  position:relative;
+  overflow:hidden;
+}
+.reason-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,rgba(201,162,39,0.06) 0%,transparent 70%);
+  opacity:0;
+  transition:opacity 0.4s;
+}
+.reason-card:hover::after{opacity:1;}
+.reason-card:hover{
+  border-color:rgba(201,162,39,0.4);
+  transform:translateY(-6px);
+}
+.reason-card .r-icon{font-size:2.4rem;margin-bottom:16px;}
+.reason-card h4{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1.2rem;
+  color:var(--gold-light);
+  margin-bottom:12px;
+}
+.reason-card p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;
+  line-height:1.7;
+  color:var(--text-light);
+}
+
+/* ── COUNTER ── */
+.counter-section{
+  background:linear-gradient(135deg,var(--green-rich),var(--green-deep));
+  padding:100px 5%;
+  text-align:center;
+}
+.counter-inner{
+  max-width:800px;
+  margin:0 auto;
+}
+.counter-num{
+  font-family:'Cinzel',serif;
+  font-size:clamp(4rem,10vw,9rem);
+  font-weight:900;
+  background:linear-gradient(135deg,var(--gold-pale),var(--gold),var(--gold-light));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;
+  margin-bottom:16px;
+}
+.counter-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;
+  font-style:italic;
+  color:var(--text-light);
+}
+.counter-sub{
+  font-family:'Lato',sans-serif;
+  font-size:0.8rem;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-top:20px;
+}
+
+/* ── AUDIO ── */
+.audio-section{
+  background:var(--green-deep);
+  padding:80px 5%;
+  text-align:center;
+}
+.audio-player-wrap{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  padding:40px 60px;
+  border:1px solid rgba(201,162,39,0.2);
+  border-radius:8px;
+  background:rgba(201,162,39,0.04);
+}
+.audio-label{
+  font-family:'Cinzel',serif;
+  font-size:0.75rem;
+  letter-spacing:5px;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+audio{filter:sepia(0.5) saturate(1.5) hue-rotate(60deg);}
+
+/* ── FOOTER ── */
+footer{
+  padding:80px 5% 60px;
+  text-align:center;
+  border-top:1px solid rgba(201,162,39,0.15);
+  background:var(--green-deep);
+  position:relative;
+  z-index:1;
+}
+.footer-emblem{
+  font-family:'Dancing Script',cursive;
+  font-size:3.5rem;
+  color:var(--gold-light);
+  margin-bottom:16px;
+}
+.footer-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--text-dim);
+}
+.footer-rule{
+  width:80px;height:1px;
+  background:var(--gold);
+  margin:24px auto;
+  opacity:0.4;
+}
+.footer-zcc{
+  font-family:'Cinzel',serif;
+  font-size:0.7rem;
+  letter-spacing:5px;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+
+/* ── MUSIC BTN ── */
+#music-btn{
+  position:fixed;
+  bottom:30px;right:30px;
+  width:60px;height:60px;
+  border:1px solid rgba(201,162,39,0.4);
+  border-radius:50%;
+  background:rgba(10,46,15,0.85);
+  backdrop-filter:blur(12px);
+  color:var(--gold-light);
+  font-size:1.3rem;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  z-index:9000;
+  transition:all 0.3s;
+  box-shadow:0 8px 30px rgba(0,0,0,0.5);
+}
+#music-btn:hover{
+  transform:scale(1.1);
+  border-color:var(--gold);
+  box-shadow:0 0 30px rgba(201,162,39,0.3);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeSlideDown{
+  from{opacity:0;transform:translateY(-30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeSlideUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+  from{opacity:0;}to{opacity:1;}
+}
+@keyframes shimmer{
+  0%{background-position:200% center;}
+  100%{background-position:-200% center;}
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .jubilee-inner{grid-template-columns:1fr;}
+  .msg-grid{grid-template-columns:1fr 1fr;}
+  .msg-featured{grid-column:1/3;}
+  .reasons-grid{grid-template-columns:repeat(2,1fr);}
+  .verse-columns{grid-template-columns:1fr;}
+  .mag-card:nth-child(1){grid-column:1/7;height:380px;}
+  .mag-card:nth-child(2){grid-column:7/13;height:380px;}
+  .mag-card:nth-child(3){grid-column:1/5;height:320px;}
+  .mag-card:nth-child(4){grid-column:5/9;height:320px;}
+  .mag-card:nth-child(5){grid-column:9/13;height:320px;}
+}
+
+@media(max-width:768px){
+  nav ul{display:none;}
+  .jubilee-inner{grid-template-columns:1fr;gap:30px;}
+  .msg-grid{grid-template-columns:1fr;}
+  .msg-featured{grid-column:1/2;}
+  .reasons-grid{grid-template-columns:repeat(2,1fr);}
+  .tl-wrap::before{left:20px;}
+  .tl-item,.tl-item:nth-child(even){flex-direction:column;padding-left:50px;}
+  .tl-item:nth-child(even) .tl-content{text-align:left;}
+  .tl-dot{left:20px;}
+  .tl-spacer{display:none;}
+  .mag-grid{grid-template-columns:1fr;}
+  .mag-card:nth-child(n){grid-column:1/-1;height:280px;}
+  .reasons-grid{grid-template-columns:1fr;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-bar"></div>
+
+<!-- CANVAS -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Z.C.C. · RUWADZANO</div>
+  <ul>
+    <li><a href="#jubilee">Jubilee</a></li>
+    <li><a href="#verse">Scripture</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#messages">Messages</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="hero-bg-rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+  </div>
+
+  <div class="hero-emblem">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="starG" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f0cb5a"/>
+          <stop offset="100%" stop-color="#c9a227"/>
+        </radialGradient>
+      </defs>
+      <!-- outer circle -->
+      <circle cx="80" cy="80" r="75" fill="none" stroke="url(#starG)" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="80" cy="80" r="65" fill="none" stroke="url(#starG)" stroke-width="0.8" opacity="0.3"/>
+      <!-- cross / dove shape -->
+      <path d="M80 20 L80 140 M20 80 L140 80" stroke="url(#starG)" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+      <!-- star points -->
+      <polygon points="80,10 85,35 110,35 90,52 97,77 80,62 63,77 70,52 50,35 75,35"
+        fill="url(#starG)" opacity="0.9"/>
+      <!-- dove stylized -->
+      <ellipse cx="80" cy="80" rx="18" ry="12" fill="#0a2e0f" stroke="url(#starG)" stroke-width="1.5"/>
+      <text x="80" y="85" text-anchor="middle" font-size="12" fill="url(#starG)" font-family="Cinzel,serif">ZCC</text>
+    </svg>
+  </div>
+
+  <div class="hero-subtitle">Zimbabwe Christian Church — Ruwadzano</div>
+
+  <h1>Honouring Our Mothers</h1>
+
+  <p class="hero-tagline">Women of faith, pillars of grace, carriers of God's glory</p>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-intro">
+    To every woman who has prayed through the darkest nights,
+    who has wiped tears not her own, who has believed when belief seemed impossible —
+    this tribute is for you. The Ruwadzano women of the Z.C.C. stand as
+    a testament to enduring love, unshakeable faith, and motherhood in its most sacred form.
+  </p>
+
+  <div class="jubilee-badge">
+    <span class="num">50</span>
+    <span class="lbl">Years Jubilee</span>
+    <span class="sub">Walking faithfully since Bishop Samuel departed</span>
+  </div>
+</header>
+
+<!-- JUBILEE STORY -->
+<section class="jubilee-story" id="jubilee">
+  <div class="section-label reveal">A Legacy Half a Century in the Making</div>
+  <h2 class="section-title reveal">The Golden Jubilee</h2>
+  <div class="gold-rule reveal"></div>
+
+  <div class="jubilee-inner reveal">
+    <div class="jubilee-text">
+      <h3>From One Generation to the Next</h3>
+      <p>
+        When Bishop Samuel Mutendi — the founding pillar of the Zimbabwe Christian Church —
+        went to be with the Lord, the church did not falter. It was the praying women,
+        the Ruwadzano, who held the congregation together through song, through tears,
+        through unwavering intercession.
+      </p>
+      <p>
+        For fifty years, under the continued spiritual leadership of Bishop Nehemiah Mutendi,
+        the Z.C.C. has not merely survived — it has flourished. And at the heart of that
+        flourishing have always been the mothers: the Ruwadzano women, dressed in green and gold,
+        carrying the church on the altar of their prayers.
+      </p>
+      <p>
+        This Golden Jubilee is not just a celebration of years. It is a celebration of
+        <em>faithfulness</em> — of women who chose God again, every single morning,
+        and raised children who knew how to kneel.
+      </p>
+    </div>
+    <div class="jubilee-milestones">
+      <div class="milestone">
+        <span class="year">1970s</span>
+        <span class="desc">Bishop Samuel Mutendi establishes the Zimbabwe Christian Church — a movement rooted in African faith and deep Biblical truth.</span>
+      </div>
+      <div class="milestone">
+        <span class="year">Transition</span>
+        <span class="desc">At the passing of Bishop Samuel, the church enters a sacred season of mourning, prayer — and the Ruwadzano lead the congregation in faith.</span>
+      </div>
+      <div class="milestone">
+        <span class="year">Nehemiah</span>
+        <span class="desc">Bishop Nehemiah Mutendi takes the mantle. Under his leadership, the church grows across Zimbabwe and beyond, to the nations.</span>
+      </div>
+      <div class="milestone">
+        <span class="year">50 Years</span>
+        <span class="desc">The Golden Jubilee — fifty years of walking with God. The Ruwadzano women have been the backbone, the voice, the hands of this journey.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIBLE VERSE -->
+<section class="bible-section" id="verse">
+  <div class="section-label reveal">The Word of God Over Every Mother</div>
+  <h2 class="section-title reveal">Scripture for the Ruwadzano</h2>
+  <div class="gold-rule reveal"></div>
+
+  <div class="verse-container">
+    <div class="verse-glow"></div>
+
+    <div class="verse-columns reveal">
+      <div class="verse-col">
+        <div class="verse-lang">English</div>
+        <p class="verse-text">
+          Her children arise and call her blessed; her husband also, and he praises her:
+          "Many women do noble things, but you surpass them all."
+          Charm is deceptive and beauty is fleeting, but a woman who fears the Lord is to be praised.
+          Honour her for all that her hands have done,
+          and let her works bring her praise at the city gate.
+        </p>
+      </div>
+      <div class="verse-col">
+        <div class="verse-lang">Shona</div>
+        <p class="verse-text">
+          Vana vake vanomuimba vanomuti akakomborerwa; nomurume wake anomuita muridzi wemuridzi.
+          Pamhamba pazvose iye anoti: "Vakadzi vazhinji vakaita zvakakwana, asi iwe wakapfuura vose."
+          Kunaka kunonyengera, unoyera haurambe uchipo; asi mukadzi anotyira Jehovha achakosha.
+          Mupei mubayiro wemabasa emavoko ake; nemabasa ake ngaarenderedze pamasuwo.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal" style="display:flex;justify-content:center;">
+      <div class="verse-ref">Proverbs / Zvirevo 31 : 28 – 31</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAGAZINE GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="section-label reveal">The Ruwadzano Women</div>
+  <h2 class="section-title reveal">Faces of Faith</h2>
+  <div class="gold-rule reveal"></div>
+
+  <div class="mag-grid reveal">
+    <div class="mag-card">
+      <img src="ruwadzano1enhanced.jpg" alt="Ruwadzano Woman"/>
+      <div class="mag-caption">
+        <div class="tag">Z.C.C. Ruwadzano</div>
+      </div>
+    </div>
+    <div class="mag-card">
+      <img src="ruwadzano2enhanced.jpg" alt="Ruwadzano Woman"/>
+      <div class="mag-caption">
+        <div class="tag">Z.C.C. Ruwadzano</div>
+      </div>
+    </div>
+    <div class="mag-card">
+      <img src="ruwadzano3enhanced.jpg" alt="Ruwadzano Woman"/>
+      <div class="mag-caption">
+        <div class="tag">Z.C.C. Ruwadzano</div>
+      </div>
+    </div>
+    <div class="mag-card">
+      <img src="ruwadzano4enhanced.jpg" alt="Ruwadzano Woman"/>
+      <div class="mag-caption">
+        <div class="tag">Z.C.C. Ruwadzano</div>
+      </div>
+    </div>
+    <div class="mag-card">
+      <img src="ruwadzano5enhanced.jpg" alt="Ruwadzano Woman"/>
+      <div class="mag-caption">
+        <div class="tag">Z.C.C. Ruwadzano</div>
+      </div>
+    </div>
+  </div>
+  <p class="mag-overlay-text reveal">Green for life. Gold for glory. Every woman a testimony.</p>
+</section>
+
+<!-- MESSAGES -->
+<section class="messages-section" id="messages">
+  <div class="section-label reveal">Words From the Heart</div>
+  <h2 class="section-title reveal">Messages to Every Mother</h2>
+  <div class="gold-rule reveal"></div>
+
+  <div class="msg-grid">
+
+    <div class="msg-card reveal">
+      <span class="msg-icon">🙏</span>
+      <h3>Your Prayers Move Mountains</h3>
+      <p>
+        The prayers you have whispered in the dark, the intercessions at 3am,
+        the silent tears you offered on behalf of your children —
+        none of them fell to the ground. God heard every single one.
+        Your prayers have moved mountains you will never even see this side of heaven.
+      </p>
+    </div>
+
+    <div class="msg-card reveal">
+      <span class="msg-icon">🌿</span>
+      <h3>You Are Living Scripture</h3>
+      <p>
+        Every time you wrapped a child in your arms, you were preaching a sermon.
+        Every meal you stretched, every uniform you ironed before sunrise,
+        every hymn you hummed while working — you were living proof
+        that God's love takes on flesh and walks among us.
+      </p>
+    </div>
+
+    <div class="msg-card reveal">
+      <span class="msg-icon">👑</span>
+      <h3>Crowned in the Kingdom</h3>
+      <p>
+        The world may not have given you trophies. There are no headlines
+        for the woman who stayed faithful. But in God's economy,
+        the crown you will receive is beyond any earthly honour.
+        You are royalty dressed in green and gold.
+      </p>
+    </div>
+
+    <div class="msg-card reveal">
+      <span class="msg-icon">🌸</span>
+      <h3>Strength Beyond Measure</h3>
+      <p>
+        You have carried grief and smiled through it. You have known hunger
+        and fed others first. You have been broken and still been the glue
+        that held families together. That is not weakness wearing a brave face —
+        that is a supernatural strength that only comes from above.
+      </p>
+    </div>
+
+    <div class="msg-card reveal">
+      <span class="msg-icon">✨</span>
+      <h3>A Heritage of Faith</h3>
+      <p>
+        The faith you planted in your children will grow into a forest.
+        The songs you taught, the scriptures you quoted, the way you knelt —
+        these things become the inheritance your grandchildren will carry
+        long after you are gone. Your legacy is eternal.
+      </p>
+    </div>
+
+    <div class="msg-card reveal">
+      <span class="msg-icon">💛</span>
+      <h3>You Are Not Forgotten</h3>
+      <p>
+        In the busyness of life, in the noise of the world,
+        sometimes the ones who give the most are noticed the least.
+        But you are seen. You are celebrated. You are deeply, eternally loved.
+        This tribute is a fraction of what you deserve.
+      </p>
+    </div>
+
+    <div class="msg-card msg-featured reveal">
+      <span class="msg-icon" style="font-size:3.5rem;">💚</span>
+      <h3 style="font-size:2.2rem;margin-bottom:24px;">To Every Ruwadzano Mother —</h3>
+      <p>
+        You chose to carry the church when it was heavy. You chose to remain
+        when leaving would have been easier. You chose God, and in choosing God,
+        you chose your families, your communities, your people.
+        The green you wear is not just a colour — it is a declaration.
+        It says: <em>"I am alive in Him, I am growing, I will not wither."</em>
+        And the gold? That is the glory of God that rests upon a woman
+        who has walked fifty years of faithfulness without turning back.
+        We see you. We honour you. We love you.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- RUWADZANO TRIBUTE -->
+<section class="ruwadzano-section">
+  <div class="ruwadzano-inner">
+    <div class="section-label reveal">The Women Who Held the Church</div>
+    <h2 class="section-title reveal">What Is Ruwadzano?</h2>
+    <div class="gold-rule reveal"></div>
+
+    <p class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1.9;color:var(--text-light);max-width:800px;margin:0 auto;">
+      Ruwadzano — in the tradition of the Zimbabwe Christian Church — is more than a women's fellowship.
+      It is a sacred sisterhood. A covenant of mothers and wives who have bound themselves together
+      in prayer, in service, in song, and in suffering. When one weeps, they all weep.
+      When one rejoices, their voices rise together. They are the heartbeat of the church,
+      dressed in their colours, walking with purpose, praying without ceasing.
+    </p>
+
+    <div class="big-quote reveal">
+      "She is clothed with strength and dignity,
+      and she laughs without fear of the future."
+      She is Ruwadzano.
+    </div>
+
+    <div class="ruwadzano-traits reveal">
+      <span class="trait-pill">Faith</span>
+      <span class="trait-pill">Intercession</span>
+      <span class="trait-pill">Sacrifice</span>
+      <span class="trait-pill">Sisterhood</span>
+      <span class="trait-pill">Endurance</span>
+      <span class="trait-pill">Grace</span>
+      <span class="trait-pill">Worship</span>
+      <span class="trait-pill">Love</span>
+      <span class="trait-pill">Motherhood</span>
+      <span class="trait-pill">Legacy</span>
+      <span class="trait-pill">Prayer</span>
+      <span class="trait-pill">Courage</span>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section" id="timeline">
+  <div class="section-label reveal">A Walk Through the Years</div>
+  <h2 class="section-title reveal">50 Years of Walking With God</h2>
+  <div class="gold-rule reveal"></div>
+
+  <div class="tl-wrap">
+
+    <div class="tl-item reveal">
+      <div class="tl-content">
+        <div class="year">The Foundation</div>
+        <h4>Bishop Samuel Mutendi</h4>
+        <p>Under Bishop Samuel, the Zimbabwe Christian Church was born — a movement that brought together Shona faith, African tradition, and Biblical truth. The Ruwadzano was among the first fellowships established, giving the women of the church a sacred home.</p>
+      </div>
+      <div class="tl-spacer"></div>
+      <div class="tl-dot"></div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-spacer"></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="year">A Nation Mourns</div>
+        <h4>The Passing of the Founding Bishop</h4>
+        <p>When Bishop Samuel departed, the church faced its greatest test. It was the praying women — the Ruwadzano — who gathered the grieving, who led in song, who held the congregation in the arms of faith. They were the church's anchor in the storm.</p>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-content">
+        <div class="year">The New Season</div>
+        <h4>Bishop Nehemiah Takes the Mantle</h4>
+        <p>Bishop Nehemiah Mutendi stepped into his father's legacy — not to copy it, but to carry it forward with fresh vision. The church grew. New congregations. New nations reached. And the Ruwadzano grew alongside it, faithful as ever.</p>
+      </div>
+      <div class="tl-spacer"></div>
+      <div class="tl-dot"></div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-spacer"></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="year">Decades of Faithfulness</div>
+        <h4>Ruwadzano Through Every Season</h4>
+        <p>Through drought and plenty, through grief and celebration, through political turbulence and national change — the Ruwadzano women kept coming. To pray. To praise. To serve. Their consistency became the church's greatest testimony.</p>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-content">
+        <div class="year">Today · The Jubilee</div>
+        <h4>50 Golden Years</h4>
+        <p>Today the Zimbabwe Christian Church celebrates fifty years of walking faithfully under the continued Mutendi leadership. Fifty years of Ruwadzano mothers, green and gold, praying the church forward. This Golden Jubilee belongs to them as much as to anyone.</p>
+      </div>
+      <div class="tl-spacer"></div>
+      <div class="tl-dot"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REASONS -->
+<section class="reasons-section">
+  <div class="section-label reveal">A Celebration of Motherhood</div>
+  <h2 class="section-title reveal">Why We Honour You</h2>
+  <div class="gold-rule reveal"></div>
+
+  <div class="reasons-grid">
+
+    <div class="reason-card reveal">
+      <div class="r-icon">🌙</div>
+      <h4>You Prayed Through the Night</h4>
+      <p>The children who are standing today are standing because someone prayed for them before they even knew they needed it.</p>
+    </div>
+
+    <div class="reason-card reveal">
+      <div class="r-icon">🍞</div>
+      <h4>You Fed More Than Bodies</h4>
+      <p>You nourished souls. The Word of God on your lips fed your children's spirits long before any pulpit could reach them.</p>
+    </div>
+
+    <div class="reason-card reveal">
+      <div class="r-icon">🕊️</div>
+      <h4>You Chose Peace</h4>
+      <p>In homes that were sometimes war zones, you were the peacemaker. Not because you were passive — but because you were Spirit-filled.</p>
+    </div>
+
+    <div class="reason-card reveal">
+      <div class="r-icon">🌿</div>
+      <h4>You Planted Faith</h4>
+      <p>Every scripture you quoted, every church service you took your children to, every prayer you prayed aloud — you were planting seeds that grow forever.</p>
+    </div>
+
+    <div class="reason-card reveal">
+      <div class="r-icon">💪</div>
+      <h4>You Endured Gracefully</h4>
+      <p>You carried things no one knew you were carrying. You smiled through pain, you served through exhaustion. That is a grace that is not of this world.</p>
+    </div>
+
+    <div class="reason-card reveal">
+      <div class="r-icon">🌺</div>
+      <h4>You Made Home Sacred</h4>
+      <p>Home was not just four walls — it was where God lived, because you lived there. Your presence made ordinary houses into places of refuge.</p>
+    </div>
+
+    <div class="reason-card reveal">
+      <div class="r-icon">🎵</div>
+      <h4>You Worshipped With Everything</h4>
+      <p>Your songs of praise were not performances. They were declarations of war against despair. And because of them, joy returned again and again.</p>
+    </div>
+
+    <div class="reason-card reveal">
+      <div class="r-icon">✝️</div>
+      <h4>You Chose God First</h4>
+      <p>Above convenience, above comfort, above what the world offered — you chose the altar. And everything good in your family flows from that choice.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- COUNTER -->
+<section class="counter-section" id="counter-sec">
+  <div class="counter-inner reveal">
+    <div class="counter-num" id="counter-num">50</div>
+    <div class="counter-label">Years of Faithful Walking</div>
+    <div class="counter-sub">Zimbabwe Christian Church · Ruwadzano · Golden Jubilee</div>
+  </div>
+</section>
+
+<!-- AUDIO -->
+<section class="audio-section">
+  <div class="section-label reveal">A Voice From the Heart</div>
+  <h2 class="section-title reveal">A Special Message</h2>
+  <div class="gold-rule reveal"></div>
+  <div class="audio-player-wrap reveal">
+    <div class="audio-label">Personal Audio Message</div>
+    <audio controls>
+      <source src="SpecialMothersAudio.mp3" type="audio/mpeg">
+      Your browser does not support audio playback.
+    </audio>
+  </div>
+</section>
+
+<!-- BACKGROUND MUSIC (autoplay soft) -->
+<audio id="bg-music" loop>
+  <source src="ruwadzano woye.mp3" type="audio/mpeg">
+</audio>
+<button id="music-btn" aria-label="Toggle music">♪</button>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-emblem">Ruwadzano</div>
+  <div class="footer-rule"></div>
+  <p class="footer-text">
+    To every mother who prayed, who stayed, who believed —
+    your story is written in eternity.
+  </p>
+  <div class="footer-rule"></div>
+  <div class="footer-zcc">Zimbabwe Christian Church · 50 Years Jubilee · Soli Deo Gloria</div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════
+   PARTICLE CANVAS — hearts, stars, sparkles
+══════════════════════════════════════════ */
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+
+function resize(){
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize',resize);
+
+class Particle {
+  constructor(){this.reset(true);}
+  reset(initial){
+    this.x  = Math.random()*canvas.width;
+    this.y  = initial ? Math.random()*canvas.height : canvas.height + 20;
+    this.size = Math.random()*18 + 8;
+    this.speed= Math.random()*0.6 + 0.25;
+    this.opacity = Math.random()*0.35 + 0.08;
+    this.drift= (Math.random()-0.5)*0.4;
+    this.rot  = Math.random()*Math.PI*2;
+    this.rotSpeed=(Math.random()-0.5)*0.015;
+    const types=['heart','star','sparkle','cross'];
+    this.type = types[Math.floor(Math.random()*types.length)];
+    // gold / green palette
+    const cols=['#c9a227','#f0cb5a','#fef0b0','#2d9e38','#ffffff'];
+    this.color= cols[Math.floor(Math.random()*cols.length)];
+  }
+  drawHeart(s){
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.bezierCurveTo(-s,-s,-s*2,s/2,-s*2,s);
+    ctx.bezierCurveTo(-s*2,s*2,0,s*2,0,s*3);
+    ctx.bezierCurveTo(0,s*2,s*2,s*2,s*2,s);
+    ctx.bezierCurveTo(s*2,s/2,s,-s,0,0);
+    ctx.fillStyle=this.color;
+    ctx.fill();
+  }
+  drawStar(s,points=5){
+    const outer=s, inner=s*0.4;
+    ctx.beginPath();
+    for(let i=0;i<points*2;i++){
+      const r=i%2===0?outer:inner;
+      const a=(Math.PI/points)*i - Math.PI/2;
+      i===0?ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r):ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);
+    }
+    ctx.closePath();
+    ctx.fillStyle=this.color;
+    ctx.fill();
+  }
+  drawSparkle(s){
+    ctx.fillStyle=this.color;
+    for(let i=0;i<4;i++){
+      ctx.save();
+      ctx.rotate(i*Math.PI/4);
+      ctx.beginPath();
+      ctx.ellipse(0,0,s*0.2,s,0,0,Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+  drawCross(s){
+    ctx.fillStyle=this.color;
+    ctx.fillRect(-s*0.18,-s,s*0.36,s*2);
+    ctx.fillRect(-s,  -s*0.35,s*2,s*0.7);
+  }
+  draw(){
+    ctx.save();
+    ctx.translate(this.x,this.y);
+    ctx.rotate(this.rot);
+    ctx.globalAlpha=this.opacity;
+    const s=this.size;
+    if(this.type==='heart') this.drawHeart(s*0.3);
+    else if(this.type==='star') this.drawStar(s);
+    else if(this.type==='sparkle') this.drawSparkle(s);
+    else this.drawCross(s*0.5);
+    ctx.restore();
+  }
+  update(){
+    this.y  -= this.speed;
+    this.x  += this.drift;
+    this.rot += this.rotSpeed;
+    if(this.y < -40) this.reset(false);
+  }
+}
+
+const particles=[];
+for(let i=0;i<90;i++) particles.push(new Particle());
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{p.update();p.draw();});
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* ══════════════════
+   SCROLL PROGRESS
+══════════════════ */
+const scrollBar=document.getElementById('scroll-bar');
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  scrollBar.style.width=pct+'%';
+});
+
+/* ══════════════════
+   REVEAL ON SCROLL
+══════════════════ */
+const reveals=document.querySelectorAll('.reveal');
+const revObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      revObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+reveals.forEach(r=>revObs.observe(r));
+
+/* ══════════════════
+   BACKGROUND MUSIC
+══════════════════ */
+const music=document.getElementById('bg-music');
+const musicBtn=document.getElementById('music-btn');
+music.volume=0.20; // soft
+
+let musicPlaying=false;
+
+function tryPlay(){
+  music.play().then(()=>{
+    musicPlaying=true;
+    musicBtn.textContent='⏸';
+  }).catch(()=>{
+    // autoplay blocked; wait for user interaction
+    document.addEventListener('click',()=>{
+      if(!musicPlaying){
+        music.play().then(()=>{
+          musicPlaying=true;
+          musicBtn.textContent='⏸';
+        });
+      }
+    },{once:true});
+  });
+}
+tryPlay();
+
+musicBtn.addEventListener('click',()=>{
+  if(musicPlaying){
+    music.pause();
+    musicBtn.textContent='♪';
+    musicPlaying=false;
+  } else {
+    music.play();
+    musicBtn.textContent='⏸';
+    musicPlaying=true;
+  }
+});
+
+/* ══════════════════
+   JUBILEE COUNTER
+══════════════════ */
+function animateCounter(el,target,duration=3000){
+  let start=null;
+  function step(ts){
+    if(!start) start=ts;
+    const progress=Math.min((ts-start)/duration,1);
+    const ease=1-Math.pow(1-progress,4);
+    el.textContent=Math.round(ease*target);
+    if(progress<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const counterEl=document.getElementById('counter-num');
+const cObs=new IntersectionObserver((entries)=>{
+  if(entries[0].isIntersecting){
+    animateCounter(counterEl,50,2500);
+    cObs.unobserve(counterEl);
+  }
+},{threshold:0.5});
+cObs.observe(counterEl);
+
+</script>
+</body>
+</html>
